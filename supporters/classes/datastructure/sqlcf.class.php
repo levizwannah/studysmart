@@ -24,7 +24,7 @@
          * @param string $lhs
          * @param array $rhs
          * 
-         * @return self
+         * @return \DataStructure\SqlCF
          */
         public function in(string $lhs, array $rhs){
             $concat = $this->commaSeparate($rhs);
@@ -38,7 +38,7 @@
          * @param mixed $lhs
          * @param array $rhs
          * 
-         * @return self
+         * @return \DataStructure\SqlCF
          */
         public function notIn($lhs, array $rhs){
             $concat = $this->commaSeparate($rhs);
@@ -64,7 +64,7 @@
          * @param mixed $rhs1 - first value
          * @param mixed $rhs2 - second value
          * 
-         * @return $this
+         * @return \DataStructure\SqlCF
          */
         public function between($lhs, $rhs1, $rhs2){
             $this->parsed[] = "$lhs BETWEEN $rhs1 AND $rhs2";
@@ -77,7 +77,7 @@
          * @param mixed $rhs1 - first value
          * @param mixed $rhs2 - second value
          * 
-         * @return $this
+         * @return \DataStructure\SqlCF
          */
         public function notBetween($lhs, $rhs1, $rhs2){
             $this->parsed[] = "$lhs NOT BETWEEN $rhs1 AND $rhs2";

@@ -2,11 +2,14 @@
     // Comments with #.# are required by `zas` for code insertion.
 
     namespace Engine;
-
     use \PDO;
     #uns#
 
 
+/**
+ * The abstract class for every SQL engine.
+ * It uses PDO to connect to the underlying database.
+ */
     abstract class AbstractSqlEngine  implements DatabaseEngineInterface {
 
         protected   string $driver;
@@ -14,6 +17,7 @@
         protected   string $dbPort;
         protected   string $dbName;
         protected   bool   $withOption;
+        protected   \PDO   $connection;
                     
         # use traits
         #ut#
@@ -45,7 +49,7 @@
 			}
 
 			try {
-				$this->dbConnection = new \PDO(
+				$this->connection = new \PDO(
 					$dsn,
 					$user,
 					$pass, 
@@ -53,18 +57,18 @@
 				);
 			} 
 			catch (\PDOException $e) {
-				echo $e->getMessage(). " Error occured while creating connection\n";
+				echo $e->getMessage(). " Error occurred while creating connection\n";
 				exit($e->getMessage());
 			}
         }
-    
-		abstract public function query(array $params);
 
-		abstract public function insert(array $params);
-
-		abstract public function delete(array $params);
-
-		abstract public function update(array $params);
-	}
+        /**
+         * closes the database connection
+         * @return void
+         */
+        public function disConnect(){
+            $this->connection = null;
+        }
+    }
 
 ?>

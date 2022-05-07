@@ -24,7 +24,7 @@
          * @param mixed $lhs - left hand side
          * @param mixed $rhs - right hand side
          * 
-         * @return self
+         * @return \DataStructure\UnaryCF
          */
         public function equal($lhs, $rhs){
             $this->parsed[] = "$lhs = $rhs";
@@ -36,7 +36,7 @@
          * @param mixed $lhs
          * @param mixed $rhs
          * 
-         * @return self
+         * @return \DataStructure\UnaryCF
          */
         public function not($lhs, $rhs){
             $this->parsed[] = "$lhs != $rhs";

@@ -19,7 +19,7 @@
          * Represents the AND condition between two or more Unary CF
          * @param array<UnaryCf> $unaryCfs - when present, will be evaluated and considered for ANDing.
          * 
-         * @return self
+         * @return \DataStructure\BinaryCF
          */
         public function and(array $unaryCfs = []){
             $this->parsed = [$this->parseUnaryCfs($unaryCfs)->format("AND")];
@@ -29,7 +29,7 @@
         /**
          * @param array<UnaryCf> $unaryCfs - when present, will be evaluated and considered for ORing.
          * 
-         * @return self
+         * @return \DataStructure\BinaryCF
          */
         public function or(array $unaryCfs = []){
             $this->parsed = [$this->parseUnaryCfs($unaryCfs)->format("OR")];
@@ -64,7 +64,7 @@
          * Add the result of unaryCfs to parsed
          * @param array<UnaryCF> $unaryCf
          * 
-         * @return self
+         * @return \DataStructure\BinaryCF
          */
         protected function parseUnaryCfs(array $unaryCf){
             
